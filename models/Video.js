@@ -1,31 +1,33 @@
 import mongoose from "mongoose";
 
-const UserSchema = mongoose.Schema(
+const videoSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
+    UserId: {
       type: String,
       required: true,
     },
-    img: {
+    title: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    imgUrl: {
       type: String,
     },
-    subscribers: {
+    views : {
       type: Number,
-      default: 0,
+      default : 0,
     },
-    subscribedUsers: {
-      type: [String],
+    videoUrl: {
+      type: String,
+      required : true,
     },
+    tags : {
+        type : [String]
+    }
   },
   { timestamps: true }
 );
