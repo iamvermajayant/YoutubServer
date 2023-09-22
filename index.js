@@ -19,10 +19,16 @@ const connect = () => {
     })
 }
 
+
+app.use(express.json());
 app.use("/api/auth/", authRoutes);
 app.use("/api/users/", userRoutes);
 app.use("/api/users/", videoRoutes);
 app.use("/api/users/", commentRoutes);
+
+app.get("/", (req,res)=>{
+    res.json("heli")
+})
 
 
 app.listen(3000, ()=>{

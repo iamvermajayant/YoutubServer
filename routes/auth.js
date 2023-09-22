@@ -1,11 +1,11 @@
 import express from "express";
-import {} from "../controllers/auth.js";
+import { signup } from "../controllers/auth.js";
 
 
 const router = express.Router();
 
 //create a USER
-router.post("/signup", )
+router.post("/signup", signup)
 
 
 //Sign in USER
