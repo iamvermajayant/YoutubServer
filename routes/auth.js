@@ -9,7 +9,7 @@ router.post("/signup", signup)
 
 
 //Sign in USER
-router.post("/signup", )
+router.post("/signup", signup)
 
 
 
