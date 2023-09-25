@@ -13,7 +13,7 @@ export const signup = async (req,res, next) => {
         await newUser.save();
         res.status(200).send("user has been created");
     } catch (error) { 
-        next();
+        next(error);
     }
 }
 
@@ -22,6 +22,11 @@ export const signIn = async (req,res, next) => {
     try {
        const user = await User.findOne({name : req.body.name})
        if(!user) return next(createError(404, "Not Found"));
+
+       const isCorrect = await bcrypt.compare(req.user.password, user.password);
+
+       if(!isCorrect) return next(createError(400, "Wrong password"));
+
     } catch (error) { 
         next(err);
     }
