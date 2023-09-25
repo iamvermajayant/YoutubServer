@@ -8,9 +8,9 @@ const router = express.Router();
 router.post("/signup", signup)
 
 
-//Sign in USER
-router.post("/signup", signIn)
 
+//Sign in USER
+router.post("/signin", signIn)
 
 
 //Google auth Sign in
