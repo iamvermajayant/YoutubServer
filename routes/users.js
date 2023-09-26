@@ -4,8 +4,28 @@ import { test } from "../controllers/user.js";
 
 const router = express.Router();
 
+//update the user 
 
-router.get("/test", test);
+//delete the user 
+
+
+// get user 
+
+
+//subscribe a user 
+
+
+//unsubscribe a user 
+
+
+//like a video 
+
+
+//dislike a video 
+
+
+
+
 
 
 export default router;
