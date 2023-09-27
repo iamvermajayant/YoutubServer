@@ -2,7 +2,7 @@ export const update(req, res, next) => {
     
 };
 
-export const delete(req, res, next) => {
+export const deleteUser(req, res, next) => {
     
 };
 
