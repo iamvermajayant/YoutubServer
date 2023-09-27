@@ -1,5 +1,5 @@
 import express from "express";
-import { test, update, deleteUser, getUser, subscribe, unsubscribe, likeVideo, dislikeVideo } from "../controllers/user.js";
+import { update, deleteUser, getUser, subscribe, unsubscribe, likeVideo, dislikeVideo } from "../controllers/user.js";
 import { verifyToken } from "../verifyToken.js";
 
 
@@ -10,24 +10,24 @@ router.put("/:id",verifyToken, update);
 
 
 //delete the user 
-router.delete("/:id", deleteUser)
+router.delete("/:id",verifyToken, deleteUser)
 
 // get user 
 router.get("/find/:id", getUser)
 
 //subscribe a user 
-router.put("/sub/:id", subscribe)
+router.put("/sub/:id",verifyToken, subscribe)
 
 
 //unsubscribe a user 
-router.put("/unsub/:id", unsubscribe)
+router.put("/unsub/:id",verifyToken, unsubscribe)
 
 //like a video 
-router.put("/like/:videoId", likeVideo)
+router.put("/like/:videoId", verifyToken, likeVideo)
 
 
 //dislike a video 
-router.put("/dislike/:videoId", dislikeVideo)
+router.put("/dislike/:videoId", verifyToken, dislikeVideo)
 
 
 
