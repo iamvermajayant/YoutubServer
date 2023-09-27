@@ -1,11 +1,12 @@
 import express from "express";
 import { test, update, deleteUser, getUser, subscribe, unsubscribe, likeVideo, dislikeVideo } from "../controllers/user.js";
+import { verifyToken } from "../verifyToken.js";
 
 
 const router = express.Router();
 
 //update the user 
-router.put("/:id", update);
+router.put("/:id",verifyToken, update);
 
 
 //delete the user 
