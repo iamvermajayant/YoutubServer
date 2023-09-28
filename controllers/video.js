@@ -1,7 +1,15 @@
 import Video from '../models/Video.js'
 
 export const addVideo = async (req, res, next) => {
-
+    try {
+        const newVideo = new Video({UserId : req.user.id, ...req.body})
+        const savedVideo = await newVideo.save();
+    
+        res.status(200).json(savedVideo);
+    } catch (error) {
+        next(error)
+    }
+   
 }
 
 
