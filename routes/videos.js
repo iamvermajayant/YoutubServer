@@ -1,5 +1,5 @@
 import express from "express";
-import { addVideo, deleteVideo, updateVideo } from "../controllers/video.js";
+import { addVideo, addView, deleteVideo, random, sub, trend, updateVideo } from "../controllers/video.js";
 import { verifyToken } from "../utils/verifyToken.js";
 
 
@@ -16,6 +16,11 @@ router.delete('/:id', verifyToken, deleteVideo)
 
 //get a video
 router.get('/find/:id', addVideo)
+
+router.put('/view/:id', addView)
+router.get('/trend', trend)
+router.get('/random', random)
+router.get('/sub', sub)
 
 
 

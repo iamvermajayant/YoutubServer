@@ -56,5 +56,39 @@ export const deleteVideo = async (req, res, next) => {
 
 
 export const getVideo = async (req, res, next) => {
+    try {
+        const video = await Video.findById(req.params.id);
+        res.status(200).json(video);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const addView = async (req, res, next) => {
+    try {
+        await Video.findByIdAndUpdate(req.params.id,{
+            $inc : {views : 1}
+        },
+        {
+            new : true
+        });
+        res.status(200).json("The views has been increased");
+    } catch (error) {
+        next(error)
+    }
+}
+export const trend = async (req, res, next) => {
+    try {
+        const videos = await Video.aggregate([{$sample : {size : 40}}])
+        res.status(200).json(videos);
+    } catch (error) {
+        next(error)
+    }
+}
+export const random = async (req, res, next) => {
 
 }
+export const sub = async (req, res, next) => {
+
+}
+
