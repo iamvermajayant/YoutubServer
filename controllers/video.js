@@ -1,5 +1,6 @@
 import Video from '../models/Video.js'
 import { createError } from '../error.js';
+import User from '../models/User.js';
 
 
 export const addVideo = async (req, res, next) => {
@@ -94,6 +95,18 @@ export const random = async (req, res, next) => {
     }
 }
 export const sub = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        const subscribedUsers = user.subscribedUsers
 
+        const list = Promise.all(
+            subscribedUsers.map((channelId)=>{
+                return Video.find({UserId : channelId})
+            })
+        )
+        res.status(200).json(list);
+    } catch (error) {
+        
+    }
 }
 
