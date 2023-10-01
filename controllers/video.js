@@ -96,17 +96,18 @@ export const random = async (req, res, next) => {
 }
 export const sub = async (req, res, next) => {
     try {
-        const user = await User.findById(req.params.id);
-        const subscribedUsers = user.subscribedUsers
+        const user = await User.findById(req.user.id);
+        if(!user) return next(createError(404, "User not found"));
+        const subscribedChannels = user.subscribedUsers
 
-        const list = Promise.all(
-            subscribedUsers.map((channelId)=>{
+        const list = await Promise.all(
+            subscribedChannels.map((channelId)=>{
                 return Video.find({UserId : channelId})
             })
         )
-        res.status(200).json(list);
+        res.status(200).json(list.flat());
     } catch (error) {
-        
+        next(error)
     }
 }
 
