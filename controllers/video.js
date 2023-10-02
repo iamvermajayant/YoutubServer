@@ -127,9 +127,9 @@ export const search = async (req, res, next) => {
     const query = req.query.q;
     try {
         const videos = await Video.find({
-            title : {$regex : query , option : i},
+            title : {$regex : query , $options : "i"},
         }).limit(40)
-        res.status.json(videos);
+        res.status(200).json(videos);
     } catch (error) {
         next(error)
     }
