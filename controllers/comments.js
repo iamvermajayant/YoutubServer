@@ -6,7 +6,7 @@ import Video from "../models/Video.js"
 export const addCommnet = async (req, res, next) => {
     const newComment = new Comment({...req.body, UserId : req.user.id})
     try {
-        const savedComment = await Comment.save();
+        const savedComment = await newComment.save();
         res.status(200).send(savedComment);
     } catch (error) {
         
