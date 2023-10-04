@@ -6,6 +6,7 @@ import authRoutes from "./routes/auth.js";
 import commentRoutes from "./routes/comment.js";
 import videoRoutes from "./routes/videos.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 dotenv.config();
@@ -19,6 +20,11 @@ const connect = () => {
         throw error;
     })
 }
+
+
+app.use(cors({
+    origin  : 'http://localhost:5173'
+}))
 
 app.use(cookieParser());
 app.use(express.json());
@@ -45,5 +51,5 @@ app.get("/", (req,res)=>{
 
 app.listen(5000, ()=>{
     connect();
-    console.log(`running on 3000`);
+    console.log(`running on 5000`);
 })
